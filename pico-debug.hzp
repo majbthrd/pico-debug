@@ -1,0 +1,100 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="pico-debug" target="8" version="2">
+  <project Name="pico-debug">
+    <configuration
+      Name="Common"
+      build_intermediate_directory="./_build/$(ProjectName) $(Configuration)"
+      build_output_directory="./_build/$(ProjectName) $(Configuration)"
+      c_preprocessor_definitions=""
+      package_dependencies="CMSIS;Cortex_M_Generic"
+      c_user_include_directories=".;./rp2040/;$(PackagesDir)/CMSIS_5/CMSIS/Core/Include;./CMSIS_5/CMSIS/DAP/Firmware/Include"
+      gcc_entry_point="boot_entry" />
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <file file_name="./main.c" />
+      <file file_name="./usb_descriptors.c" />
+      <file file_name="myboard.c" />
+      <file file_name="clock_setup.c" />
+    </folder>
+    <folder Name="hal">
+      <file file_name="$(TOP)/hw/bsp/board.c" />
+      <file file_name="$(TOP)/src/portable/raspberrypi/rp2040/rp2040_usb.c" />
+    </folder>
+    <folder Name="CMSIS-DAP">
+      <file file_name="./CMSIS_5/CMSIS/DAP/Firmware/Source/DAP.c" />
+      <file file_name="./CMSIS_5/CMSIS/DAP/Firmware/Source/DAP_vendor.c" />
+      <file file_name="./CMSIS_5/CMSIS/DAP/Firmware/Source/JTAG_DP.c" />
+      <file file_name="./CMSIS_5/CMSIS/DAP/Firmware/Source/SW_DP.c" />
+      <file file_name="./CMSIS_5/CMSIS/DAP/Firmware/Source/SWO.c" />
+    </folder>
+    <folder Name="TinyUSB">
+      <file file_name="$(TOP)/src/tusb.c" />
+      <file file_name="$(TOP)/src/common/tusb_fifo.c" />
+      <file file_name="$(TOP)/src/device/usbd.c" />
+      <file file_name="$(TOP)/src/device/usbd_control.c" />
+      <file file_name="$(TOP)/src/class/msc/msc_device.c" />
+      <file file_name="$(TOP)/src/class/cdc/cdc_device.c" />
+      <file file_name="$(TOP)/src/class/dfu/dfu_rt_device.c" />
+      <file file_name="$(TOP)/src/class/hid/hid_device.c" />
+      <file file_name="$(TOP)/src/class/midi/midi_device.c" />
+      <file file_name="$(TOP)/src/class/usbtmc/usbtmc_device.c" />
+      <file file_name="$(TOP)/src/class/vendor/vendor_device.c" />
+      <file file_name="$(TOP)/src/class/net/net_device.c" />
+      <file file_name="$(TOP)/src/portable/$(VENDOR)/$(CHIP_FAMILY)/dcd_$(CHIP_FAMILY).c" />
+    </folder>
+    <folder Name="System Files">
+      <file file_name="picodebug_Startup.s" />
+      <file file_name="picodebug_placement.xml" />
+    </folder>
+    <configuration Name="Release" link_time_optimization="Yes" />
+  </project>
+  <configuration
+    Name="Common"
+    Placement="RAM"
+    Target="Cortex-M0+"
+    arm_architecture="v6M"
+    arm_core_type="Cortex-M0+"
+    arm_fpu_type="None"
+    arm_linker_heap_size="0"
+    arm_linker_process_stack_size="0"
+    arm_linker_stack_size="2048"
+    arm_simulator_memory_simulation_filename="$(StudioDir)/bin/ARMSimulatorMemory$(HostDLL)"
+    arm_simulator_memory_simulation_parameter="ROM;0x0;0x00100000;RAM;0x20000000;0x00042000;RAM;0x15000000;0x00004000"
+    arm_target_debug_interface_type="ADIv5"
+    arm_target_loader_applicable_loaders=""
+    arm_target_loader_default_loader=""
+    c_preprocessor_definitions="CFG_TUSB_MCU=OPT_MCU_RP2040"
+    c_user_include_directories="$(TOP)/src/;$(TOP)/hw/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/common/pico_stdlib/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_gpio/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/common/pico_base/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/boards/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/pico_platform/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2040/hardware_regs/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_base/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2040/hardware_structs/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_claim/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_sync/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_uart/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_divider/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/common/pico_time/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_timer/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/common/pico_sync/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/common/pico_util/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/pico_runtime/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_clocks/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_resets/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_watchdog/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_xosc/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_pll/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_vreg/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_irq/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/pico_printf/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/pico_bootrom/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/common/pico_bit_ops/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/common/pico_divider/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/pico_double/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/pico_int64_ops/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/pico_float/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/common/pico_binary_info/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/pico_stdio/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/pico_stdio_uart/include/;$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/include/"
+    linker_memory_map_file="picodebug_MemoryMap.xml"
+    macros="TOP=./tinyusb/;VENDOR=raspberrypi;CHIP_FAMILY=rp2040"
+    project_directory=""
+    project_type="Executable"
+    property_groups_file_path="$(TargetsDir)/Cortex_M/propertyGroups.xml"
+    target_reset_script="Reset()"
+    target_script_file="$(TargetsDir)/Cortex_M/Cortex_M_Target.js" />
+  <configuration Name="THUMB Debug" inherited_configurations="THUMB;Debug" />
+  <configuration
+    Name="THUMB"
+    Platform="ARM"
+    arm_instruction_set="Thumb"
+    arm_library_instruction_set="Thumb"
+    c_preprocessor_definitions="__THUMB"
+    hidden="Yes" />
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="None"
+    hidden="Yes" />
+  <configuration
+    Name="THUMB Release"
+    inherited_configurations="THUMB;Release" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 1"
+    hidden="Yes" />
+</solution>
