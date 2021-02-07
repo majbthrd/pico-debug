@@ -1,5 +1,5 @@
 <!DOCTYPE Board_Memory_Definition_File>
 <Root name="Cortex-M0">
-  <MemorySegment start="0x20030000" size="0x4100" access="Read/Write" name="SRAM" />
+  <MemorySegment start="0x2003BF00" size="0x4100" access="Read/Write" name="SRAM" />
   <MemorySegment start="0x15000000" size="0x4000" access="Read/Write" name="XIP_SRAM" />
 </Root>

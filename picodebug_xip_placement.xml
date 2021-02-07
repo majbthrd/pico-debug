@@ -1,0 +1,15 @@
+<!DOCTYPE Linker_Placement_File>
+<Root name="picodebug Section Placement">
+  <MemorySegment name="SRAM">
+    <ProgramSection alignment="4" load="Yes" name=".boot" />
+    <ProgramSection alignment="4" load="Yes" name=".bootc" />
+    <ProgramSection alignment="0x100" load="Yes" runoffset="0x15000000-0x2003C000" name=".vectors" />
+    <ProgramSection alignment="4" load="Yes" runoffset="0x15000000-0x2003C000" name=".text" />
+    <ProgramSection alignment="4" load="Yes" runoffset="0x15000000-0x2003C000" name=".data" />
+    <ProgramSection alignment="4" load="Yes" runoffset="0x15000000-0x2003C000" name=".rodata" />
+    <ProgramSection alignment="4" load="No" runoffset="0x15000000-0x2003C000" name=".bss" />
+    <ProgramSection alignment="8" size="__STACKSIZE__" load="No" runoffset="0x15000000-0x2003C000" name=".stack" />
+  </MemorySegment>
+  <MemorySegment name="XIP_SRAM">
+  </MemorySegment>
+</Root>

@@ -3,18 +3,20 @@
   <project Name="pico-debug">
     <configuration
       Name="Common"
+      batch_build_configurations="THUMB Release - SRAM;THUMB Release - XIP"
       build_intermediate_directory="./_build/$(ProjectName) $(Configuration)"
       build_output_directory="./_build/$(ProjectName) $(Configuration)"
       c_preprocessor_definitions=""
-      package_dependencies="CMSIS;Cortex_M_Generic"
       c_user_include_directories=".;./rp2040/;$(PackagesDir)/CMSIS_5/CMSIS/Core/Include;./CMSIS_5/CMSIS/DAP/Firmware/Include"
-      gcc_entry_point="boot_entry" />
+      gcc_entry_point="boot_entry"
+      package_dependencies="CMSIS;Cortex_M_Generic" />
     <folder Name="Source Files">
       <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
       <file file_name="./main.c" />
       <file file_name="./usb_descriptors.c" />
       <file file_name="myboard.c" />
       <file file_name="clock_setup.c" />
+      <file file_name="spawn.c" />
     </folder>
     <folder Name="hal">
       <file file_name="$(TOP)/hw/bsp/board.c" />
@@ -44,9 +46,7 @@
     </folder>
     <folder Name="System Files">
       <file file_name="picodebug_Startup.s" />
-      <file file_name="picodebug_placement.xml" />
     </folder>
-    <configuration Name="Release" link_time_optimization="Yes" />
   </project>
   <configuration
     Name="Common"
@@ -72,7 +72,6 @@
     property_groups_file_path="$(TargetsDir)/Cortex_M/propertyGroups.xml"
     target_reset_script="Reset()"
     target_script_file="$(TargetsDir)/Cortex_M/Cortex_M_Target.js" />
-  <configuration Name="THUMB Debug" inherited_configurations="THUMB;Debug" />
   <configuration
     Name="THUMB"
     Platform="ARM"
@@ -81,20 +80,26 @@
     c_preprocessor_definitions="__THUMB"
     hidden="Yes" />
   <configuration
-    Name="Debug"
-    c_preprocessor_definitions="DEBUG"
-    gcc_debugging_level="Level 3"
-    gcc_omit_frame_pointer="Yes"
-    gcc_optimization_level="None"
-    hidden="Yes" />
+    Name="THUMB Release - XIP"
+    inherited_configurations="THUMB;Release;XIP" />
   <configuration
-    Name="THUMB Release"
-    inherited_configurations="THUMB;Release" />
+    Name="THUMB Release - SRAM"
+    inherited_configurations="THUMB;Release;SRAM" />
   <configuration
     Name="Release"
     c_preprocessor_definitions="NDEBUG"
     gcc_debugging_level="Level 3"
     gcc_omit_frame_pointer="Yes"
     gcc_optimization_level="Level 1"
-    hidden="Yes" />
+    hidden="Yes"
+    link_time_optimization="Yes" />
+  <configuration
+    Name="XIP"
+    hidden="Yes"
+    linker_section_placement_file="picodebug_xip_placement.xml" />
+  <configuration
+    Name="SRAM"
+    c_preprocessor_definitions="STAY_IN_SRAM"
+    hidden="Yes"
+    linker_section_placement_file="picodebug_sram_placement.xml" />
 </solution>

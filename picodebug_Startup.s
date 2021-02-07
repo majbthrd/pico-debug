@@ -42,6 +42,7 @@
   .syntax unified
   .global boot_entry
   .extern main
+  .extern multicore_launch_core1_raw
   .global exit
   .weak exit
 
@@ -49,6 +50,7 @@
   .thumb_func
 
 boot_entry:
+#ifndef STAY_IN_SRAM
   /* disable flash cache (allowing XIP_SRAM access) */
   ldr r0, =0x14000000
   ldr r1, =0
@@ -70,15 +72,17 @@ copy_loop:
   subs r2, r2, #1
   bne copy_loop
 copy_finished:
+#endif
 
-  ldr r1, =__vectors_start__ /* origin of where vector table now resides */
-  ldr r0, =0xE000ED08 /* VTOR register */
-  str r1, [r0] /* point VTOR to user app */
-  ldr r0, [r1] /* load stack pointer from user app */
-  msr msp, r0
-  msr psp, r0
-  ldr r0, [r1, #4] /* load reset address from user app */
-  mov pc, r0
+  ldr r2, =__vectors_start__ /* origin of where vector table now resides */
+  ldr r1, [r2] /* load stack pointer from user app */
+  ldr r0, [r2, #4] /* load reset address from user app */
+  ldr r3, =multicore_launch_core1_raw
+  blx r3
+
+sleep:
+  wfi
+  b sleep
 
   .section .vectors, "ax"
   .code 16  

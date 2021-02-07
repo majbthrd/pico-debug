@@ -225,7 +225,7 @@ __STATIC_INLINE void PORT_SWD_SETUP (void) {
 
   /* enable the peripheral and enable local control of core1's SWD interface */
   resets_hw->reset &= ~RESETS_RESET_SYSCFG_BITS;
-  syscfg_hw->dbgforce = SYSCFG_DBGFORCE_PROC1_ATTACH_BITS;
+  syscfg_hw->dbgforce = SYSCFG_DBGFORCE_PROC0_ATTACH_BITS;
 
 #if 1
   /* this #if block is a temporary measure to perform target selection even if the host IDE doesn't know how */
@@ -238,12 +238,12 @@ __STATIC_INLINE void PORT_SWD_SETUP (void) {
   SWJ_Sequence(8*sizeof(sequence_alert), sequence_alert);
 
   /* it is possible to do this with SWJ_Sequence on the rp2040 since data input and output are distinct */
-  static const uint8_t write_targetsel[] = { 0x99, 0xff, 0x24, 0x05, 0x20, 0x22, 0x00, };
+  static const uint8_t write_targetsel[] = { 0x99, 0xff, 0x24, 0x05, 0x20, 0x00, 0x00, };
   SWJ_Sequence(8*sizeof(write_targetsel), write_targetsel);
 #endif
 
   /* set to default high level */
-  syscfg_hw->dbgforce |= SYSCFG_DBGFORCE_PROC1_SWCLK_BITS | SYSCFG_DBGFORCE_PROC1_SWDI_BITS;
+  syscfg_hw->dbgforce |= SYSCFG_DBGFORCE_PROC0_SWCLK_BITS | SYSCFG_DBGFORCE_PROC0_SWDI_BITS;
 }
 
 /** Disable JTAG/SWD I/O Pins.
@@ -268,14 +268,14 @@ __STATIC_FORCEINLINE uint32_t PIN_SWCLK_TCK_IN  (void) {
 Set the SWCLK/TCK DAP hardware I/O pin to high level.
 */
 __STATIC_FORCEINLINE void     PIN_SWCLK_TCK_SET (void) {
-  syscfg_hw->dbgforce |= SYSCFG_DBGFORCE_PROC1_SWCLK_BITS;
+  syscfg_hw->dbgforce |= SYSCFG_DBGFORCE_PROC0_SWCLK_BITS;
 }
 
 /** SWCLK/TCK I/O pin: Set Output to Low.
 Set the SWCLK/TCK DAP hardware I/O pin to low level.
 */
 __STATIC_FORCEINLINE void     PIN_SWCLK_TCK_CLR (void) {
-  syscfg_hw->dbgforce &= ~SYSCFG_DBGFORCE_PROC1_SWCLK_BITS;
+  syscfg_hw->dbgforce &= ~SYSCFG_DBGFORCE_PROC0_SWCLK_BITS;
 }
 
 
@@ -294,21 +294,21 @@ __STATIC_FORCEINLINE uint32_t PIN_SWDIO_TMS_IN  (void) {
 Set the SWDIO/TMS DAP hardware I/O pin to high level.
 */
 __STATIC_FORCEINLINE void     PIN_SWDIO_TMS_SET (void) {
-  syscfg_hw->dbgforce |= SYSCFG_DBGFORCE_PROC1_SWDI_BITS;
+  syscfg_hw->dbgforce |= SYSCFG_DBGFORCE_PROC0_SWDI_BITS;
 }
 
 /** SWDIO/TMS I/O pin: Set Output to Low.
 Set the SWDIO/TMS DAP hardware I/O pin to low level.
 */
 __STATIC_FORCEINLINE void     PIN_SWDIO_TMS_CLR (void) {
-  syscfg_hw->dbgforce &= ~SYSCFG_DBGFORCE_PROC1_SWDI_BITS;
+  syscfg_hw->dbgforce &= ~SYSCFG_DBGFORCE_PROC0_SWDI_BITS;
 }
 
 /** SWDIO I/O pin: Get Input (used in SWD mode only).
 \return Current status of the SWDIO DAP hardware I/O pin.
 */
 __STATIC_FORCEINLINE uint32_t PIN_SWDIO_IN      (void) {
-  return (syscfg_hw->dbgforce & SYSCFG_DBGFORCE_PROC1_SWDO_BITS) ? 1U : 0U;
+  return (syscfg_hw->dbgforce & SYSCFG_DBGFORCE_PROC0_SWDO_BITS) ? 1U : 0U;
 }
 
 /** SWDIO I/O pin: Set Output (used in SWD mode only).
@@ -316,9 +316,9 @@ __STATIC_FORCEINLINE uint32_t PIN_SWDIO_IN      (void) {
 */
 __STATIC_FORCEINLINE void     PIN_SWDIO_OUT     (uint32_t bit) {
   if (bit & 1)
-    syscfg_hw->dbgforce |= SYSCFG_DBGFORCE_PROC1_SWDI_BITS;
+    syscfg_hw->dbgforce |= SYSCFG_DBGFORCE_PROC0_SWDI_BITS;
   else
-    syscfg_hw->dbgforce &= ~SYSCFG_DBGFORCE_PROC1_SWDI_BITS;
+    syscfg_hw->dbgforce &= ~SYSCFG_DBGFORCE_PROC0_SWDI_BITS;
 }
 
 /** SWDIO I/O pin: Switch to Output mode (used in SWD mode only).
@@ -334,7 +334,7 @@ Configure the SWDIO DAP hardware I/O pin to input mode. This function is
 called prior \ref PIN_SWDIO_IN function calls.
 */
 __STATIC_FORCEINLINE void     PIN_SWDIO_OUT_DISABLE (void) {
-  syscfg_hw->dbgforce |= SYSCFG_DBGFORCE_PROC1_SWDI_BITS;
+  syscfg_hw->dbgforce |= SYSCFG_DBGFORCE_PROC0_SWDI_BITS;
 }
 
 

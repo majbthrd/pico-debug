@@ -23,7 +23,7 @@ tusb_desc_device_t const desc_device =
     /* using Dapper Miser CMSIS-DAP VID:PID */
     .idVendor           = 0x1209,
     .idProduct          = 0x2488,
-    .bcdDevice          = 0x1000,
+    .bcdDevice          = 0x1001,
 
     .iManufacturer      = 0,
     .iProduct           = STRID_PRODUCT,
