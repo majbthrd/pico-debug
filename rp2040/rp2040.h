@@ -39,7 +39,7 @@ typedef enum
   RTC_IRQn            = 25,
 } IRQn_Type;
 
-#include "core_cm0.h"
+#include "core_cm0plus.h"
 
 #include "hardware/regs/addressmap.h"
 
