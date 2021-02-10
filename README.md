@@ -8,17 +8,29 @@ Boot the RP2040 with the BOOTSEL button pressed, copy over pico-debug.uf2, and i
 
 To cater to different user situations, there are two versions of pico-debug: **MAXRAM** and **GIMMECACHE**
 
+Most users will prefer to use the **GIMMECACHE** version.
+
 With **pico-debug-maxram**, *all* 264kBytes of SRAM on the RP2040 is available for running user code; pico-debug shoehorns itself entirely into the 16kBytes of XIP_SRAM (aka flash cache).
 
 With **pico-debug-gimmecache**, 248kBytes (94% of total) of SRAM is available for running user code; pico-debug gives plenty of elbow room by occupying only 6% near the very top of SRAM, and unlike MAXRAM, leaves the flash cache operational.
 
 If viewing this on github, pre-built binaries are available for download on the right under "Releases".
 
+## How to use
+
+Please read [howto/README.md](howto/README.md) for instructions on how to start using pico-debug.
+
 ## Caveats whilst using pico-debug
+
+The executive summary is:
+
+pico-debug uses the USB port to provide debugging to the user, so the user's app can't be simultaneously using the USB port! :)
+
+The specifics are:
 
 - MAXRAM only: the flash cache cannot be used by the user code, as pico-debug is using this memory
 - GIMMECACHE only: SRAM 0x2003C000 to 0x2003FFFF must not be used by user code
-- user code cannot reconfigure the PLL and clocks, as the USB peripheral needs this
+- user code cannot reconfigure the PLL_USB, as the USB peripheral needs this
 - the USB peripheral is used to provide the debugger, so the user code cannot use it as well
 
 ## License
