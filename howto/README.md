@@ -4,7 +4,7 @@ For applications that use pico-sdk (pico-examples, etc. ... this is true of near
 
 ## debugging Pico applications with pico-debug
 
-For OpenOCD users (including Visual Studio Code, etc.), after following the above steps on building Pico applications, please follow the instructions in [openocd.md](openocd.md).
+For OpenOCD users (including [Visual Studio Code](https://code.visualstudio.com/), etc.), after following the above steps on building Pico applications, please follow the instructions in [openocd.md](openocd.md).  For Visual Studio Code users, then also read [vscode.md](vscode.md).
 
 Or, if you are a [Rowley Crossworks for ARM](https://www.rowley.co.uk/arm/index.htm) user, take a look at the pico-crossworks example in [pico-demos](https://github.com/majbthrd/pico-demos).
 
