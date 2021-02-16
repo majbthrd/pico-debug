@@ -6,7 +6,7 @@
       batch_build_configurations="THUMB Release - SRAM;THUMB Release - XIP"
       build_intermediate_directory="./_build/$(ProjectName) $(Configuration)"
       build_output_directory="./_build/$(ProjectName) $(Configuration)"
-      c_preprocessor_definitions=""
+      c_preprocessor_definitions="static_assert=_Static_assert;PICO_DEFAULT_UART_INSTANCE=uart0;__unused=__attribute__((unused))"
       c_user_include_directories=".;./rp2040/;$(PackagesDir)/CMSIS_5/CMSIS/Core/Include;./CMSIS_5/CMSIS/DAP/Firmware/Include"
       gcc_entry_point="boot_entry"
       package_dependencies="CMSIS;Cortex_M_Generic" />
