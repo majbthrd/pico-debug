@@ -8,3 +8,5 @@ For OpenOCD users (including [Visual Studio Code](https://code.visualstudio.com/
 
 Or, if you are a [Rowley Crossworks for ARM](https://www.rowley.co.uk/arm/index.htm) user, take a look at the pico-crossworks example in [pico-demos](https://github.com/majbthrd/pico-demos).
 
+Or, if you are a [SEGGER Embedded Studio](https://www.segger.com/products/development-tools/embedded-studio/) user, take a look at the pico-ses example in [pico-demos](https://github.com/majbthrd/pico-demos).  Before debugging a target with SEGGER Embedded Studio, you will need to run openocd as shown in the [openocd.md](openocd.md) instructions.
+
