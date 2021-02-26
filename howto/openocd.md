@@ -20,6 +20,8 @@ $ sudo apt install gdb-multiarch
 
 ## Use GDB, OpenOCD, and pico-debug to debug 'blinky'
 
+If you have not already built blinky (or whichever app that you might choose to debug), some [sample instructions are here](building.md).
+
 Obtain "pico-debug-gimmecache.uf2" from the Releases at:
 
 https://github.com/majbthrd/pico-debug
@@ -50,11 +52,11 @@ Info : starting gdb server for rp2040.core0 on 3333
 Info : Listening on port 3333 for gdb connections
 ```
 
-This OpenOCD terminal needs to be left open. So go ahead and open another terminal, in this one we’ll attach a gdb instance to OpenOCD:
+This OpenOCD terminal needs to be left open. So go ahead and open another terminal; in this one we’ll attach a gdb instance to OpenOCD:
 
 ```
 $ cd ~/pico/pico-examples/build/picoboard/blinky
-$ gdb-multiarch picoboard-blinky.elf
+$ gdb-multiarch picoboard_blinky.elf
 ```
 
 Connect GDB to OpenOCD:
@@ -63,7 +65,7 @@ Connect GDB to OpenOCD:
 (gdb) target remote localhost:3333
 ```
 
-and load picoboard-blinky.elf into flash:
+and load picoboard_blinky.elf into flash:
 
 ```
 (gdb) load
