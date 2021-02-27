@@ -1,3 +1,7 @@
+## About debugging
+
+This [executive summary](about.md) might be of interest, particularly if you are new to debugging.
+
 ## building Pico applications
 
 For applications that use pico-sdk (pico-examples, etc. ... this is true of nearly all code), please follow the instructions in [building.md](building.md).
