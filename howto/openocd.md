@@ -12,6 +12,8 @@ $ make -j4
 $ sudo make install
 ```
 
+For Mac users building openocd, please also look at [the suggestions here](https://github.com/majbthrd/pico-debug/issues/5).
+
 ## Install GDB
 
 ```
