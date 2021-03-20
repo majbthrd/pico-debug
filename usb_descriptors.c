@@ -5,6 +5,8 @@ enum
 {
   STRID_LANGID = 0,
   STRID_PRODUCT,
+  STRID_MANUFACTURER,
+  STRID_SERIAL,
 };
 
 //--------------------------------------------------------------------+
@@ -23,11 +25,11 @@ tusb_desc_device_t const desc_device =
     /* using Dapper Miser CMSIS-DAP VID:PID */
     .idVendor           = 0x1209,
     .idProduct          = 0x2488,
-    .bcdDevice          = 0x1002,
+    .bcdDevice          = 0x1003,
 
-    .iManufacturer      = 0,
+    .iManufacturer      = STRID_MANUFACTURER,
     .iProduct           = STRID_PRODUCT,
-    .iSerialNumber      = 0,
+    .iSerialNumber      = STRID_SERIAL,
 
     .bNumConfigurations = 0x01
 };
@@ -92,11 +94,15 @@ uint8_t const * tud_descriptor_configuration_cb(uint8_t index)
 // String Descriptors
 //--------------------------------------------------------------------+
 
+char unique_id[17] = "0000000000000000";
+
 // array of pointer to string descriptors
 char const* string_desc_arr [] =
 {
   [STRID_LANGID]       = (const char[]) { 0x09, 0x04 }, // supported language is English (0x0409)
   [STRID_PRODUCT]      = "CMSIS-DAP",                   // Product
+  [STRID_MANUFACTURER] = "pico-debug",                  // Manufacturer
+  [STRID_SERIAL]       = (const char *)unique_id,       // Serial
 };
 
 static uint16_t _desc_str[32];

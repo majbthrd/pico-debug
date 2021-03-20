@@ -157,13 +157,15 @@ __STATIC_INLINE uint8_t DAP_GetProductString (char *str) {
   return (0U);
 }
 
+extern char unique_id[17];
+
 /** Get Serial Number string.
 \param str Pointer to buffer to store the string.
 \return String length.
 */
 __STATIC_INLINE uint8_t DAP_GetSerNumString (char *str) {
-  (void)str;
-  return (0U);
+  memcpy(str, unique_id, sizeof(unique_id));
+  return sizeof(unique_id);
 }
 
 ///@}

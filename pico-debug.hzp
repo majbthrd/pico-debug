@@ -16,11 +16,11 @@
       <file file_name="./usb_descriptors.c" />
       <file file_name="myboard.c" />
       <file file_name="spawn.c" />
+      <file file_name="bootcode.c"/>
     </folder>
     <folder Name="hal">
       <file file_name="$(TOP)/hw/bsp/board.c" />
       <file file_name="$(TOP)/src/portable/raspberrypi/rp2040/rp2040_usb.c" />
-      <file file_name="$(TOP)/hw/mcu/raspberrypi/pico-sdk/src/rp2_common/hardware_pll/pll.c" />
     </folder>
     <folder Name="CMSIS-DAP">
       <file file_name="./CMSIS_5/CMSIS/DAP/Firmware/Source/DAP.c" />

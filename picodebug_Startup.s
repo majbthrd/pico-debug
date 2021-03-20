@@ -55,24 +55,13 @@ boot_entry:
   ldr r0, =0x14000000
   ldr r1, =0
   str r1, [r0]
-
-  /* copy initialized memory sections en masse into final destinations */
-  ldr r0, =__vectors_load_start__
-  ldr r1, =__vectors_start__
-  ldr r2, =__rodata_end__
-  cmp r0, r1
-  beq copy_finished
-  subs r2, r2, r1
-  beq copy_finished
-copy_loop:
-  ldrb r3, [r0]
-  adds r0, r0, #1
-  strb r3, [r1]
-  adds r1, r1, #1
-  subs r2, r2, #1
-  bne copy_loop
-copy_finished:
+  /* undocumented step to ensure XIP_SRAM is ready for accesses */
+  ldr r1, [r0, #4]
 #endif
+
+  ldr r0, =__SRAM_segment_end__
+  mov sp, r0
+  bl SystemInit
 
   ldr r2, =__vectors_start__ /* origin of where vector table now resides */
   ldr r1, [r2] /* load stack pointer from user app */

@@ -1,8 +1,10 @@
 <!DOCTYPE Linker_Placement_File>
 <Root name="picodebug Section Placement">
-  <MemorySegment name="SRAM">
+  <MemorySegment name="BOOT">
     <ProgramSection alignment="4" load="Yes" name=".boot" />
     <ProgramSection alignment="4" load="Yes" name=".bootc" />
+  </MemorySegment>
+  <MemorySegment name="SRAM">
     <ProgramSection alignment="0x100" load="Yes" name=".vectors" />
     <ProgramSection alignment="4" load="Yes" name=".text" />
     <ProgramSection alignment="4" load="Yes" name=".data" />
