@@ -6,11 +6,31 @@ This [executive summary](about.md) might be of interest, particularly if you are
 
 For applications that use pico-sdk (pico-examples, etc. ... this is true of nearly all code), please follow the instructions in [building.md](building.md).
 
-## debugging Pico applications with pico-debug
+## debugging Pico applications with pico-debug using the GDB protocol
 
-For OpenOCD users (including [Visual Studio Code](https://code.visualstudio.com/), etc.), after following the above steps on building Pico applications, please follow the instructions in [openocd.md](openocd.md).  For Visual Studio Code users, then also read [vscode.md](vscode.md).
+You have a choice between this and "debugging Pico applications with pico-debug without using the GDB protocol" further below.
 
-Or, if you are a [Rowley Crossworks for ARM](https://www.rowley.co.uk/arm/index.htm) user, take a look at the pico-crossworks example in [pico-demos](https://github.com/majbthrd/pico-demos).
+First make certain that you have followed the steps above in "building Pico applications".
 
-Or, if you are a [SEGGER Embedded Studio](https://www.segger.com/products/development-tools/embedded-studio/) user, take a look at the pico-ses example in [pico-demos](https://github.com/majbthrd/pico-demos).  Before debugging a target with SEGGER Embedded Studio, you will need to run openocd as shown in the [openocd.md](openocd.md) instructions.
+For OpenOCD users, please follow the instructions in [openocd.md](openocd.md).
+
+For pyOCD users, please follow the instructions in [pyocd.md](pyocd.md).
+
+Then proceed to "debuggers that use GDB" immediately below.
+
+## debuggers that use GDB
+
+First make certain that you have your GDB implementation of choice running (OpenOCD, pyOCD, etc.).
+
+For [Visual Studio Code](https://code.visualstudio.com/) users, then also read [vscode.md](vscode.md).
+
+For [SEGGER Embedded Studio](https://www.segger.com/products/development-tools/embedded-studio/) users, take a look at the pico-ses example in [pico-demos](https://github.com/majbthrd/pico-demos).
+
+## debugging Pico applications with pico-debug without using the GDB protocol
+
+You have a choice between this and "debugging Pico applications with pico-debug using the GDB protocol" further above.
+
+First make certain that you have followed the steps above in "building Pico applications".
+
+If you are a [Rowley Crossworks for ARM](https://www.rowley.co.uk/arm/index.htm) user, take a look at the pico-crossworks example in [pico-demos](https://github.com/majbthrd/pico-demos).
 
