@@ -1,10 +1,12 @@
 ## Build openocd
 
-*Until the CMSIS-DAP pull request is accepted by Raspberry Pi, we'll have to use a fork of their fork.*
+Rather than use the authentic OpenOCD, Raspberry Pi had their own dated OpenOCD fork which their documentation continues to point to.  Maintenance by Raspberry Pi of this code stagnated shortly after the RP2040 launch, and users are ill-advised to keep using this code fork unless they find they strictly need to.
+
+The authentic OpenOCD should be used with pico-debug.  Here are the steps to build it:
 
 ```
 $ sudo apt install automake autoconf build-essential texinfo libtool libhidapi-dev libusb-1.0-0-dev
-$ git clone https://github.com/majbthrd/openocd.git --recursive --branch rp2040_cmsisdap_demo --depth=1
+$ git clone git://git.code.sf.net/p/openocd/code openocd
 $ cd openocd
 $ ./bootstrap
 $ ./configure --enable-cmsis-dap
