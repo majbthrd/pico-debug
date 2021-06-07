@@ -1,24 +1,8 @@
-## Download the Pico SDK and examples
+## Pico SDK
 
-Create a subdirectory to hold the files that you will download:
+If your local copy of Pico SDK was downloaded prior to 3 Jun 2021, you will need to reinstall it.  Versions prior to this are incompatible with pico-debug.
 
-```
-$ cd ~/
-$ mkdir pico
-$ cd pico
-```
-
-Clone the pico-sdk and pico-examples git repositories:
-
-*NOTE: a substitute for pico-sdk is presently utilized, since pico-sdk currently lacks important features.*
-
-```
-$ git clone https://github.com/majbthrd/pico-sdk.git --branch pll_init
-$ cd pico-sdk
-$ git submodule update --init
-$ cd ..
-$ git clone -b master https://github.com/raspberrypi/pico-examples.git
-```
+Pico SDK is available here: https://github.com/raspberrypi/pico-sdk
 
 ## Install the Toolchain
 
