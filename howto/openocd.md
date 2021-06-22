@@ -1,8 +1,8 @@
 ## Build openocd
 
-Rather than use the authentic OpenOCD, Raspberry Pi had their own dated OpenOCD fork which their documentation continues to point to.  Maintenance by Raspberry Pi of this code stagnated shortly after the RP2040 launch, and users are ill-advised to keep using this code fork unless they find they strictly need to.
+Users can choose between the authentic OpenOCD or Raspberry Pi's own dated OpenOCD fork which their documentation continues to point to.
 
-The authentic OpenOCD should be used with pico-debug.  Here are the steps to build it:
+Here are the steps to build the authentic OpenOCD:
 
 ```
 $ sudo apt install automake autoconf build-essential texinfo libtool libhidapi-dev libusb-1.0-0-dev
@@ -13,6 +13,8 @@ $ ./configure --enable-cmsis-dap
 $ make -j4
 $ sudo make install
 ```
+
+However, users that are beholden to Raspberry Pi (and its proprietary pico-probe) will find that they must continue using the RPi fork, and should freshly download the source code to something no older than 2021 Jun 18 and re-build it to ensure compatibility with pico-debug.
 
 For Mac users building openocd, please also look at [the suggestions here](https://github.com/majbthrd/pico-debug/issues/5).
 
@@ -33,7 +35,7 @@ https://github.com/majbthrd/pico-debug
 Boot the RP2040 with the BOOTSEL button pressed, copy over pico-debug-gimmecache.uf2 to the RP2040, and it immediately reboots as a CMSIS-DAP adapter (ready for OpenOCD to talk to it).
 
 ```
-$ openocd -f interface/cmsis-dap.cfg -c "transport select swd" -c "adapter speed 4000" -f target/rp2040-core0.cfg
+$ openocd -f board/pico-debug.cfg
 ```
 
 Your output should look something like this:
