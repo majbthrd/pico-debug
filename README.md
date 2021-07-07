@@ -6,15 +6,21 @@ pico-debug runs on one core in a RP2040 and provides a USB CMSIS-DAP interface t
 
 Boot the RP2040 with the BOOTSEL button pressed, copy over pico-debug.uf2, and it immediately reboots as a CMSIS-DAP adapter.  pico-debug loads as a RAM only .uf2 image, meaning that it is never written to flash and doesn't replace existing user code.
 
-To cater to different user situations, there are two versions of pico-debug: **MAXRAM** and **GIMMECACHE**
+To cater to different user situations, there are two versions of pico-debug to [download](https://github.com/majbthrd/pico-debug/releases): **MAXRAM** and **GIMMECACHE**
 
-Most users will prefer to use the **GIMMECACHE** version.
+Most users (including all [arduino-pico](https://github.com/earlephilhower/arduino-pico) users) should use the **GIMMECACHE** version.
 
 With **pico-debug-maxram**, *all* 264kBytes of SRAM on the RP2040 is available for running user code; pico-debug shoehorns itself entirely into the 16kBytes of XIP_SRAM (aka flash cache).
 
 With **pico-debug-gimmecache**, 248kBytes (94% of total) of SRAM is available for running user code; pico-debug gives plenty of elbow room by occupying only 6% near the very top of SRAM, and unlike MAXRAM, leaves the flash cache operational.
 
-If viewing this on github, pre-built binaries are available for download on the right under "Releases".
+If viewing this on github, pre-built binaries are available for [download](https://github.com/majbthrd/pico-debug/releases) on the right under "Releases".
+
+## Why pico-debug exists
+
+pico-debug provides a debugger with only one RP2040 board instead of another debugger’s approach with two RP2040 boards plus fiddly wiring; this makes this capability more accessible to all users and means that any RP2040-based design can have this latent debug capability without added cost.
+
+pico-debug uses the CMSIS-DAP standard, making it compatible with the considerable amount of software development that has already gone into an array of existing CMSIS-DAP compatible IDEs.  This standards-based approach seems far preferable to re-inventing the wheel with yet another proprietary debugger protocol.
 
 ## How to use
 
