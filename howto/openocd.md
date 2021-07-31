@@ -1,4 +1,8 @@
-## Build openocd
+## pre-built openocd
+
+Pre-built openocd binaries compatible with pico-debug [can be found here](https://github.com/earlephilhower/pico-quick-toolchain/releases/) for several operating systems.
+
+## Build openocd yourself (Linux specific)
 
 Users can choose between the authentic OpenOCD or Raspberry Pi's own dated OpenOCD fork which their documentation continues to point to.
 
