@@ -34,3 +34,5 @@ First make certain that you have followed the steps above in "building Pico appl
 
 If you are a [Rowley Crossworks for ARM](https://www.rowley.co.uk/arm/index.htm) user, take a look at the pico-crossworks example in [pico-demos](https://github.com/majbthrd/pico-demos).
 
+If you use [Keil MDK](https://www.arm.com/products/development-tools/embedded-and-software/keil-mdk) or [Keil MDK-Lite](https://www2.keil.com/mdk5/editions/lite), take a look at [Pico_Template](https://github.com/GorgonMeducer/Pico_Template).
+
