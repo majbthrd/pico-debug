@@ -57,3 +57,4 @@ __NO_RETURN static void bad_happened(void)
 
 void panic(const char *fmt, ...) { bad_happened(); }
 void __assert(const char *__expression, const char *__filename, int __line) { bad_happened(); }
+void hard_assertion_failure(void) { bad_happened(); }

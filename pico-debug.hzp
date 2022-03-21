@@ -41,7 +41,8 @@
       <file file_name="$(TOP)/src/class/midi/midi_device.c" />
       <file file_name="$(TOP)/src/class/usbtmc/usbtmc_device.c" />
       <file file_name="$(TOP)/src/class/vendor/vendor_device.c" />
-      <file file_name="$(TOP)/src/class/net/net_device.c" />
+      <file file_name="$(TOP)/src/class/net/ecm_rndis_device.c" />
+      <file file_name="$(TOP)/src/class/net/ncm_device.c" />
       <file file_name="$(TOP)/src/portable/$(VENDOR)/$(CHIP_FAMILY)/dcd_$(CHIP_FAMILY).c" />
     </folder>
     <folder Name="System Files">
