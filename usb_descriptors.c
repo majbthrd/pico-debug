@@ -16,7 +16,7 @@ tusb_desc_device_t const desc_device =
 {
     .bLength            = sizeof(tusb_desc_device_t),
     .bDescriptorType    = TUSB_DESC_DEVICE,
-    .bcdUSB             = 0x0200,
+    .bcdUSB             = 0x0110,
     .bDeviceClass       = 0x00,
     .bDeviceSubClass    = 0x00,
     .bDeviceProtocol    = 0x00,
@@ -25,7 +25,7 @@ tusb_desc_device_t const desc_device =
     /* using Dapper Miser CMSIS-DAP VID:PID */
     .idVendor           = 0x1209,
     .idProduct          = 0x2488,
-    .bcdDevice          = 0x1003,
+    .bcdDevice          = 0x1004,
 
     .iManufacturer      = STRID_MANUFACTURER,
     .iProduct           = STRID_PRODUCT,
