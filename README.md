@@ -37,6 +37,7 @@ The specifics are:
 - MAXRAM only: the flash cache cannot be used by the user code, as pico-debug is using this memory
 - GIMMECACHE only: SRAM 0x2003C000 to 0x2003FFFF must not be used by user code
 - user code cannot reconfigure the PLL_USB, as the USB peripheral needs this
+- after loading the pico-debug .uf2 and subsequently starting to run user code, CLK_SYS starts in a configuration where it is being fed by the 48MHz PLL_USB; Pico SDK users shouldn't care, but bare-metal developers might want to know this
 - the USB peripheral is used to provide the debugger, so the user code cannot use it as well
 
 ## License
