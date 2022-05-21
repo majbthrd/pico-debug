@@ -22,6 +22,8 @@ However, users that are beholden to Raspberry Pi (and its proprietary pico-probe
 
 For Mac users building openocd, please also look at [the suggestions here](https://github.com/majbthrd/pico-debug/issues/5).
 
+For OpenBSD users, please also look at [the suggestions here](https://github.com/majbthrd/pico-debug/discussions/23).
+
 ## Install GDB
 
 ```
