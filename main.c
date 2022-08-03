@@ -68,7 +68,6 @@ uint16_t tud_hid_get_report_cb(uint8_t instance, uint8_t report_id, hid_report_t
 void tud_hid_set_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_t report_type, uint8_t const* RxDataBuffer, uint16_t bufsize)
 {
   static uint8_t TxDataBuffer[CFG_TUD_HID_EP_BUFSIZE];
-  uint32_t response_size = TU_MIN(CFG_TUD_HID_EP_BUFSIZE, bufsize);
 
   // This doesn't use multiple report and report ID
   (void) instance;
@@ -77,5 +76,5 @@ void tud_hid_set_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_
 
   DAP_ProcessCommand(RxDataBuffer, TxDataBuffer);
 
-  tud_hid_report(0, TxDataBuffer, response_size);
+  tud_hid_report(0, TxDataBuffer, sizeof(TxDataBuffer));
 }
